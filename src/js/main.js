@@ -1,10 +1,10 @@
-// API fetching and splitting
+import '../sass/style.scss';
+import apiUrl from './config.js';
 
 // Get data with JQuery (should be cleaned up to use ES6)
 let coins = $.when(
-  $.getJSON('https://api.coinmarketcap.com/v1/ticker/')
+  $.getJSON(apiUrl)
 ).done( function(coins) {
-    console.log(coins);
 
 const coin = coins.find(coin => {
 

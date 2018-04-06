@@ -1,19 +1,29 @@
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {
-  entry: './public/js/main.js',
+  entry: './src/js/main.js',
   output: {
-    path: path.resolve(__dirname, 'public/js/'),
-    filename: 'bundle.js'
+    filename: 'public/js/bundle.js'
   },
   module: {
     rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015']
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
       }
-    }]
+    ]
   }
 };
