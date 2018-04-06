@@ -41,8 +41,8 @@ const coin = coins.find(coin => {
       var cellCount = 0, colCount = 0;
       var setNum = $table.find(".Rtable-cell").length / Math.max( $table.find(".Tab").length, $table.find(".Accordion").length );
       $table.find(".Rtable-cell").each( function() {
-        $(this).addClass("hiddenSmall");
-        if( selectedControls[colCount] === "true" ) $(this).removeClass("hiddenSmall");
+        $(this).addClass("hidden");
+        if( selectedControls[colCount] === "true" ) $(this).removeClass("hidden");
         cellCount++;
         if( cellCount % setNum === 0 ) colCount++;
       });
