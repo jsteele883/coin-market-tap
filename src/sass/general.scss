@@ -1,0 +1,37 @@
+/* Page styling
+================================== */
+html {
+  height: 100%;
+  background-color: #3C4664;
+}
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 1200px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.2em;
+  border-top: none;
+  border-bottom: none;
+  color: $font-color;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: $font-color;
+}
+h3 {
+  font-size: 1.2em;
+}
+h4 {
+  font-size: 1em;
+}
+strong {
+  color: #434d57;
+}
