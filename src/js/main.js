@@ -1,13 +1,12 @@
 import '../sass/style.scss';
-import apiUrl from './config.js';
+import getApiData from './combine-data';
+import { coinDescriptions } from './config';
 
 // Get data with JQuery (should be cleaned up to use ES6)
-let coins = $.when(
-  $.getJSON(apiUrl)
-).done( function(coins) {
+let coins = $.when(getApiData).done( function(coins) {
+  console.log(coins.name[index[1]]);
 
-const coin = coins.find(coin => {
-
+  const coin = coins.find(coin => {
   const markup = `
     ${coins.map(coin => `
                         <button class="Accordion" role="tab" aria-selected="false">
@@ -28,7 +27,7 @@ const coin = coins.find(coin => {
                           </div>
                         </div>
                         <div class="Rtable-cell Rtable-cell--foot">
-                          <p>Here's a description</p>
+                          <p></p>
                         </div>`).join('')}
   `;
   const tableContainer = document.getElementById('tableContainer');
