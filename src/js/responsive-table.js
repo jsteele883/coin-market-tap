@@ -1,33 +1,33 @@
 // JQuery for toggle functionality
-import $ from 'jquery';
+(function ($) {
+  "use strict";
+  $.fn.responsiveTable = function() {
 
-$.fn.responsiveTable = function() {
+    var toggleColumns = function($table) {
+      var selectedControls = [];
+      $table.find(".Accordion").each( function() {
+        selectedControls.push( $(this).attr("aria-selected") );
+      });
+      var cellCount = 0, colCount = 0;
+      var setNum = $table.find(".Rtable-cell").length / Math.max( $table.find(".Accordion").length );
+      $table.find(".Rtable-cell").each( function() {
+        $(this).addClass("hidden");
+        if( selectedControls[colCount] === "true" ) $(this).removeClass("hidden");
+        cellCount++;
+        if( cellCount % setNum === 0 ) colCount++;
+      });
+    };
+    $(this).each(function(){ toggleColumns($(this)); });
 
-  var toggleColumns = function($table) {
-    var selectedControls = [];
-    $table.find(".Accordion, .Tab").each( function() {
-      selectedControls.push( $(this).attr("aria-selected") );
+    $(this).find(".Accordion").click( function() {
+      $(this).attr("aria-selected", $(this).attr("aria-selected") !== "true" );
+      toggleColumns( $(this).parents(".Rtable") );
     });
-    var cellCount = 0, colCount = 0;
-    var setNum = $table.find(".Rtable-cell").length / Math.max( $table.find(".Tab").length, $table.find(".Accordion").length );
-    $table.find(".Rtable-cell").each( function() {
-      $(this).addClass("hiddenSmall");e
-      if( selectedControls[colCount] === "true" ) $(this).removeClass("hiddenSmall");
-      cellCount++;
-      if( cellCount % setNum === 0 ) colCount++;
-    });
+
   };
-  $(this).each(function(){ toggleColumns($(this)); });
+}(jQuery));
 
-  $(this).find(".Tab").click( function() {
-    $(this).attr("aria-selected","true").siblings().attr("aria-selected","false");
-    toggleColumns( $(this).parents(".Rtable") );
-  });
 
-  $(this).find(".Accordion").click( function() {
-    $(this).attr("aria-selected", $(this).attr("aria-selected") !== "true" );
-    toggleColumns( $(this).parents(".Rtable") );
-  });
-};
-
-export { responsiveTable };
+export function tableToggle () {
+  $(".js-RtableAccordions").responsiveTable();
+}
