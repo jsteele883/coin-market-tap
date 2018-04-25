@@ -11,7 +11,7 @@ let coins = $.when(getApiData).done( function(coins) {
   const combinedData = _.map(coins, function(obj) {
     return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
   });
-
+  // render markup for each coin
   const coin = combinedData.find(coin => {
   const markup = `
     ${combinedData.map(coin => `
@@ -39,5 +39,6 @@ let coins = $.when(getApiData).done( function(coins) {
   const tableContainer = document.getElementById('tableContainer');
   tableContainer.innerHTML = markup;
 });
+// apply toggle Functionality to each coin
 tableToggle();
 });
