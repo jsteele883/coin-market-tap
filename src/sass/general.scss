@@ -11,11 +11,14 @@ body {
   margin: 0 auto;
   padding: 2em;
   max-width: 1200px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: $font-family;
   font-size: 1.2em;
   border-top: none;
   border-bottom: none;
   color: $font-color;
+  @media screen and (max-width: 500px) {
+    padding: 1em;
+  }
 }
 h1,
 h2,
@@ -34,4 +37,7 @@ h4 {
 }
 strong {
   color: #434d57;
+}
+button {
+  font-family: $font-family;
 }

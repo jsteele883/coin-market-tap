@@ -2,6 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  p {
+    font-size: .75em;
+  }
 }
 .Rtable-cell {
   box-sizing: border-box;
@@ -12,9 +15,21 @@
   list-style: none;
   color: #fff;
   background: rgba( $accordion-colour, .4 );
-  transition: $transition;
   width: 0%;
 }
+
+.Rtable--3cols {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.Accordion[aria-selected="true"] + .Rtable--3cols {
+  opacity: 1;
+  max-height: 200px;
+  transition: all 0.25s ease-in;
+}
+
 .Rtable-cell > h1,
 .Rtable-cell > h2,
 .Rtable-cell > h3,
@@ -112,6 +127,13 @@
   .hiddenSmall {
     display: none;
   }
+  .Rtable.Rtable--3cols {
+    max-width: 100%;
+    .Rtable-cell {
+      width: 100%;
+      padding: 0.2em .8em;
+    }
+  }
 }
 /* Accordion Styling
 ==================================== */
@@ -142,7 +164,6 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-width: 0;
-    font-size: 1em;
   }
   &:before {
     content: "+";
