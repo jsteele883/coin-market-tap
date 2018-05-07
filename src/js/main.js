@@ -15,10 +15,16 @@ let coins = $.when(getApiData).done( function(coins) {
   const coin = combinedData.find(coin => {
   const markup = `
     ${combinedData.map(coin => `
-                        <button class="Accordion" role="tab" aria-selected="false">
+                        <button class="Accordion Accordion--${(coin.percent_change_24h > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
                           <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
                           <div class="Accordion__title">
                             ${coin.name}
+                          </div>
+                          <div class="Accordion__data">
+                            <p>$${coin.price_usd}USD</p>
+                          </div>
+                          <div class="Accordion__data">
+                            <p>${coin.percent_change_24h}</p>
                           </div>
                         </button>
                         <div class="Rtable Rtable--3cols">

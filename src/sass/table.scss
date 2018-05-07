@@ -144,7 +144,7 @@
   position: relative;
   width: 100%;
   margin: 0 0 0.5em 0;
-  padding: 2em 2em 2em ($icon-size);
+  padding: 2em 2em 2em 2em;
   border-radius: 1.2em;
   text-align: left;
   background-color: $accordion-colour;
@@ -181,6 +181,18 @@
   }
   .Accordion__icon {
     margin-right: 1em;
+  }
+  .Accordion__title {
+    width: 30%;
+  }
+  .Accordion__data {
+    width: 25%;
+  }
+  &.Accordion--positive {
+    background: $accordion-colour-positive;
+  }
+  &.Accordion--negative {
+    background: $accordion-colour-negative;
   }
 }
 .js-RtableTabs,
