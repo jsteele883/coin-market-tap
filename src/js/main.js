@@ -8,24 +8,24 @@ import { tableToggle } from './responsive-table';
 let coins = $.when(getApiData).done( function(coins) {
 
   // combine coin descriptions with api data
-  const combinedData = _.map(coins, function(obj) {
+  let combinedData = _.map(coins, function(obj) {
     return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
   });
   // sort data
   const tabMarkup = `
-    <button class="Tab" role="tab" aria-selected="false">1 Hour</button>
-    <button class="Tab" role="tab" aria-selected="true">24 Hours</button>
-    <button class="Tab" role="tab" aria-selected="false">7 Days</button>
+    <button id="one" class="Tab" role="tab">1 Hour</button>
+    <button id="two" class="Tab" role="tab" aria-selected="true">24 Hours</button>
+    <button id="three" class="Tab" role="tab">7 Days</button>
   `
   const tableContainer = document.getElementById('tabContainer');
   tableContainer.innerHTML = tabMarkup;
 
-  const sorted = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
-  console.log(sorted);
+  // Default sorting
+  let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
 
   // render markup for each coin
-  const coin = combinedData.find(coin => {
-  const accordionMarkup = `
+  let coin = combinedData.find(function renderCoins(coin) {
+  let accordionMarkup = `
     ${combinedData.map(coin => `
                         <button class="Accordion Accordion--${(coin.percent_change_24h > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
                           <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
@@ -56,7 +56,25 @@ let coins = $.when(getApiData).done( function(coins) {
   `;
   const tableContainer = document.getElementById('tableContainer');
   tableContainer.innerHTML = accordionMarkup;
+  $('.Tab').on('click', function update() {
+    tableContainer.innerHTML = accordionMarkup;
+    $('.Tab').removeClass('selected');
+    $(this).addClass('selected');
+    $(this).focus();
+    if ($('#one').hasClass('selected')) {
+      let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
+      renderCoins();
+    } else if ($('#two').hasClass('selected')) {
+      let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+      renderCoins();
+    } else if ($('#three').hasClass('selected')) {
+      let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
+      renderCoins();
+    }
+    tableToggle();
+  });
 });
 // apply toggle Functionality to each coin
 tableToggle();
+
 });
