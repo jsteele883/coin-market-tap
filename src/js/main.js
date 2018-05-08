@@ -4,16 +4,28 @@ import { coinDescriptions } from './config';
 import _ from 'lodash';
 import { tableToggle } from './responsive-table';
 
-// Get data with JQuery (should be cleaned up to use ES6)
+// Get data with JQuery
 let coins = $.when(getApiData).done( function(coins) {
 
   // combine coin descriptions with api data
   const combinedData = _.map(coins, function(obj) {
     return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
   });
+  // sort data
+  const tabMarkup = `
+    <button class="Tab" role="tab" aria-selected="false">1 Hour</button>
+    <button class="Tab" role="tab" aria-selected="true">24 Hours</button>
+    <button class="Tab" role="tab" aria-selected="false">7 Days</button>
+  `
+  const tableContainer = document.getElementById('tabContainer');
+  tableContainer.innerHTML = tabMarkup;
+
+  const sorted = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+  console.log(sorted);
+
   // render markup for each coin
   const coin = combinedData.find(coin => {
-  const markup = `
+  const accordionMarkup = `
     ${combinedData.map(coin => `
                         <button class="Accordion Accordion--${(coin.percent_change_24h > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
                           <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
@@ -43,7 +55,7 @@ let coins = $.when(getApiData).done( function(coins) {
                         </div>`).join('')}
   `;
   const tableContainer = document.getElementById('tableContainer');
-  tableContainer.innerHTML = markup;
+  tableContainer.innerHTML = accordionMarkup;
 });
 // apply toggle Functionality to each coin
 tableToggle();
