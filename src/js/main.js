@@ -3,22 +3,19 @@ import getApiData from './combine-data';
 import { coinDescriptions } from './config';
 import _ from 'lodash';
 import { tableToggle } from './responsive-table';
+import { renderTabs } from './tabs';
+import selectedTab from './tabs';
+import { renderCoins } from './accordions';
+
+renderTabs()
 
 // Get data with JQuery
 let coins = $.when(getApiData).done( function(coins) {
 
   // combine coin descriptions with api data
-  let combinedData = _.map(coins, function(obj) {
+  const combinedData = _.map(coins, function(obj) {
     return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
   });
-  // sort data
-  const tabMarkup = `
-    <button id="one" class="Tab" role="tab">1 Hour</button>
-    <button id="two" class="Tab" role="tab" aria-selected="true">24 Hours</button>
-    <button id="three" class="Tab" role="tab">7 Days</button>
-  `
-  const tableContainer = document.getElementById('tabContainer');
-  tableContainer.innerHTML = tabMarkup;
 
   // Default sorting
   let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
@@ -56,25 +53,38 @@ let coins = $.when(getApiData).done( function(coins) {
   `;
   const tableContainer = document.getElementById('tableContainer');
   tableContainer.innerHTML = accordionMarkup;
-  $('.Tab').on('click', function update() {
-    tableContainer.innerHTML = accordionMarkup;
-    $('.Tab').removeClass('selected');
-    $(this).addClass('selected');
-    $(this).focus();
-    if ($('#one').hasClass('selected')) {
-      let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
-      renderCoins();
-    } else if ($('#two').hasClass('selected')) {
-      let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
-      renderCoins();
-    } else if ($('#three').hasClass('selected')) {
-      let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
-      renderCoins();
-    }
-    tableToggle();
+  // apply toggle Functionality to each coin
+  tableToggle();
   });
-});
-// apply toggle Functionality to each coin
-tableToggle();
 
+  // tab toggling function
+  (function tabClick() {
+    const tab = document.getElementsByClassName("Tab");
+    let current = -1;
+
+    for (let i = 0; i < tab.length; i++) {
+      tab[i].addEventListener('click', function() {
+        if (i !== current && current !== -1) {
+          tab[current].classList.remove('active');
+        }
+        current = this.classList.toggle('active') ? i : -1;
+        let selectedTab = (this.id);
+        console.log(selectedTab);
+        if (selectedTab == 'one') {
+          const orderDataOne = combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
+          let data = orderDataOne;
+          renderCoins(data)
+        } else if (selectedTab == 'two') {
+          const orderDataTwentyFour = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+          let data = orderDataTwentyFour;
+          renderCoins(data)
+        } else if (selectedTab == 'three') {
+          const orderDataSeven = combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
+          let data = orderDataSeven;
+          renderCoins(data)
+        }
+        tableToggle();
+        });
+      };
+  })();
 });
