@@ -48,7 +48,7 @@ let coins = $.when(getApiData).done( function(coins) {
                           </div>
                         </div>
                         <div class="Rtable-cell Rtable-cell--foot">
-                          <p>${coin.description}</p>
+                          <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
                         </div>`).join('')}
   `;
   const tableContainer = document.getElementById('tableContainer');
@@ -73,7 +73,8 @@ let coins = $.when(getApiData).done( function(coins) {
         if (selectedTab == 'one') {
           const orderDataOne = combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
           let data = orderDataOne;
-          renderCoins(data)
+          let timeScale = 'percent_change_1h';
+          renderCoins(data, timeScale)
         } else if (selectedTab == 'two') {
           const orderDataTwentyFour = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
           let data = orderDataTwentyFour;
