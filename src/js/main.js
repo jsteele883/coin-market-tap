@@ -18,7 +18,7 @@ let coins = $.when(getApiData).done( function(coins) {
   });
 
   // Default sorting
-  let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+  // let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
 
   // render markup for each coin
   let coin = combinedData.find(function renderCoins(coin) {
@@ -33,7 +33,7 @@ let coins = $.when(getApiData).done( function(coins) {
                             <p>$${coin.price_usd}USD</p>
                           </div>
                           <div class="Accordion__data">
-                            <p>${coin.percent_change_24h}</p>
+                            <p>${coin.percent_change_24h}%</p>
                           </div>
                         </button>
                         <div class="Rtable Rtable--3cols">
@@ -69,20 +69,18 @@ let coins = $.when(getApiData).done( function(coins) {
         }
         current = this.classList.toggle('active') ? i : -1;
         let selectedTab = (this.id);
-        console.log(selectedTab);
         if (selectedTab == 'one') {
           const orderDataOne = combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
           let data = orderDataOne;
-          let timeScale = 'percent_change_1h';
-          renderCoins(data, timeScale)
+          renderCoins(data, selectedTab)
         } else if (selectedTab == 'two') {
           const orderDataTwentyFour = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
           let data = orderDataTwentyFour;
-          renderCoins(data)
+          renderCoins(data, selectedTab)
         } else if (selectedTab == 'three') {
           const orderDataSeven = combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
           let data = orderDataSeven;
-          renderCoins(data)
+          renderCoins(data, selectedTab)
         }
         tableToggle();
         });
