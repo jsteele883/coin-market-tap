@@ -5,7 +5,9 @@ import _ from 'lodash';
 import { tableToggle } from './responsive-table';
 import { renderTabs } from './tabs';
 import selectedTab from './tabs';
-import { renderCoins } from './accordions';
+import { accordionMarkup } from './accordions';
+import { accordionMarkupOne } from './accordions';
+import { accordionMarkupWeek } from './accordions';
 
 renderTabs()
 
@@ -18,44 +20,13 @@ let coins = $.when(getApiData).done( function(coins) {
   });
 
   // Default sorting
-  // let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+  let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
 
-  // render markup for each coin
-  let coin = combinedData.find(function renderCoins(coin) {
-  let accordionMarkup = `
-    ${combinedData.map(coin => `
-                        <button class="Accordion Accordion--${(coin.percent_change_24h > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
-                          <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
-                          <div class="Accordion__title">
-                            ${coin.name}
-                          </div>
-                          <div class="Accordion__data">
-                            <p>$${coin.price_usd}USD</p>
-                          </div>
-                          <div class="Accordion__data">
-                            <p>${coin.percent_change_24h}%</p>
-                          </div>
-                        </button>
-                        <div class="Rtable Rtable--3cols">
-                          <div class="Rtable-cell">
-                            <p>Value:</p>
-                          </div>
-                          <div class="Rtable-cell">
-                            <p>$${coin.price_usd}USD</p>
-                          </div>
-                          <div class="Rtable-cell">
-                            <p>${coin.price_btc}BTC</p>
-                          </div>
-                        </div>
-                        <div class="Rtable-cell Rtable-cell--foot">
-                          <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
-                        </div>`).join('')}
-  `;
+  // apply markup
   const tableContainer = document.getElementById('tableContainer');
-  tableContainer.innerHTML = accordionMarkup;
+  tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
   // apply toggle Functionality to each coin
   tableToggle();
-  });
 
   // tab toggling function
   (function tabClick() {
@@ -70,17 +41,14 @@ let coins = $.when(getApiData).done( function(coins) {
         current = this.classList.toggle('active') ? i : -1;
         let selectedTab = (this.id);
         if (selectedTab == 'one') {
-          const orderDataOne = combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
-          let data = orderDataOne;
-          renderCoins(data, selectedTab)
+          combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
+          tableContainer.innerHTML = `${combinedData.map(accordionMarkupOne).join('')}`;
         } else if (selectedTab == 'two') {
-          const orderDataTwentyFour = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
-          let data = orderDataTwentyFour;
-          renderCoins(data, selectedTab)
+          combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+          tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
         } else if (selectedTab == 'three') {
-          const orderDataSeven = combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
-          let data = orderDataSeven;
-          renderCoins(data, selectedTab)
+          combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
+          tableContainer.innerHTML = `${combinedData.map(accordionMarkupWeek).join('')}`;
         }
         tableToggle();
         });
