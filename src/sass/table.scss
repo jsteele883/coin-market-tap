@@ -5,6 +5,14 @@
   p {
     font-size: .9em;
   }
+  .icon {
+    display: inline-block;
+    width: .75em;
+    height: .75em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
 }
 .Rtable-cell {
   box-sizing: border-box;
@@ -18,13 +26,15 @@
   width: 0%;
 }
 
-.Rtable--3cols {
+.Rtable--3cols,
+.Rtable--4cols {
   max-height: 0;
   opacity: 0;
   transition: all 0.5s ease-out;
 }
 
-.Accordion[aria-selected="true"] + .Rtable--3cols {
+.Accordion[aria-selected="true"] + .Rtable--3cols,
+.Accordion[aria-selected="true"] ~ .Rtable--4cols {
   opacity: 1;
   max-height: 200px;
   transition: all 0.25s ease-in;
@@ -85,9 +95,9 @@
   color: white;
 }
 .Rtable-cell--head {
-  background-color: slategrey;
-  border-color: #5a6673;
   color: white;
+  font-weight: bold;
+  font-size: 0.75em;
 }
 .Rtable-cell--head > h1,
 .Rtable-cell--head > h2,
@@ -127,7 +137,8 @@
   .hiddenSmall {
     display: none;
   }
-  .Rtable.Rtable--3cols {
+  .Rtable.Rtable--3cols,
+  .Rtable.Rtable--4cols {
     max-width: 100%;
     .Rtable-cell {
       width: 100%;
@@ -159,40 +170,57 @@
     outline: none;
     filter: contrast(150%);
   }
-  &[aria-selected="true"] {
-    margin-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-width: 0;
-  }
-  &:before {
-    content: "+";
+  .Accordion__toggle {
     position: absolute;
-    top: 50%;
-    right: 0.3em;
-    margin-top: -($icon-size/1.75);
-    font-weight: normal;
-    font-size: $icon-size;
-    line-height: $icon-size;
-    background-size: $icon-size $icon-size;
+    right: 2em;
+    .icon {
+      width: 1em;
+      height: 1em;
+      transition: $transition;
+    }
   }
-  &[aria-selected="true"]:before {
-    content: "-";
+  &[aria-selected="true"] .icon-plus {
+    height: 0;
   }
   .Accordion__icon {
     margin-right: 1em;
   }
   .Accordion__title {
     width: 30%;
+    transition: $transition;
   }
   .Accordion__data {
     width: 25%;
+    transition: all 0.5s ease;
+    text-align: center;
   }
   &.Accordion--positive {
     background: $accordion-colour-positive;
   }
   &.Accordion--negative {
     background: $accordion-colour-negative;
+  }
+  &[aria-selected="true"] {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-width: 0;
+    filter: contrast(150%);
+    .Accordion__title {
+      font-size: 1.75em;
+      width: 40%;
+    }
+    .Accordion__data--hide {
+      width: 0%;
+      p {
+        font-size: 0;
+        opacity: 0;
+      }
+    }
+    .Accordion__data--show {
+      width: 40%;
+      font-size: 1.75em;
+    }
   }
 }
 .js-RtableTabs,
