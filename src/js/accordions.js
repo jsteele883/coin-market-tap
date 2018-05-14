@@ -105,7 +105,7 @@ export function accordionMarkupWeek(coin) {
               <p>$${coin.price_usd}USD</p>
             </div>
             <div class="Accordion__data Accordion__data--show">
-              <p>${coin.percent_change_7d}% ${(coin.percent_change_7dh > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
+              <p>${coin.percent_change_7d}% ${(coin.percent_change_7d > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
             </div>
             <div class="Accordion__toggle">
               <svg class="icon icon-plus"><use xlink:href="#icon-plus"></use></svg>
