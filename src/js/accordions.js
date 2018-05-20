@@ -1,6 +1,9 @@
 export function accordionMarkup(coin) {
   return `
           <button class="Accordion Accordion--${(coin.percent_change_24h > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
+            <div class="Accordion__rank">
+              ${coin.rank}
+            </div>
             <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
             <div class="Accordion__title">
               ${coin.name}
@@ -17,7 +20,7 @@ export function accordionMarkup(coin) {
           </button>
           <div class="Rtable Rtable--3cols">
             <div class="Rtable-cell Rtable-cell--head">
-              <p>Value:</p>
+              <h4>Value:</h4>
             </div>
             <div class="Rtable-cell">
               <p>$${coin.price_usd}USD</p>
@@ -28,15 +31,18 @@ export function accordionMarkup(coin) {
           </div>
           <div class="Rtable Rtable--4cols">
             <div class="Rtable-cell Rtable-cell--head">
-              <p>Supply:</p>
+              <h4>Supply:</h4>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Available:</h5>
               <p>$${coin.available_supply}</p>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Total:</h5>
               <p>${coin.total_supply}</p>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Max:</h5>
               <p>${coin.max_supply}</p>
             </div>
           </div>
@@ -49,6 +55,9 @@ export function accordionMarkup(coin) {
 export function accordionMarkupOne(coin) {
   return `
           <button class="Accordion Accordion--${(coin.percent_change_1h > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
+            <div class="Accordion__rank">
+              ${coin.rank}
+            </div>
             <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
             <div class="Accordion__title">
               ${coin.name}
@@ -65,7 +74,7 @@ export function accordionMarkupOne(coin) {
           </button>
           <div class="Rtable Rtable--3cols">
             <div class="Rtable-cell Rtable-cell--head">
-              <p>Value:</p>
+              <h4>Value:</h4>
             </div>
             <div class="Rtable-cell">
               <p>$${coin.price_usd}USD</p>
@@ -76,15 +85,18 @@ export function accordionMarkupOne(coin) {
           </div>
           <div class="Rtable Rtable--4cols">
             <div class="Rtable-cell Rtable-cell--head">
-              <p>Supply:</p>
+              <h4>Supply:</h4>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Available:</h5>
               <p>$${coin.available_supply}</p>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Total:</h5>
               <p>${coin.total_supply}</p>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Max:</h5>
               <p>${coin.max_supply}</p>
             </div>
           </div>
@@ -97,6 +109,9 @@ export function accordionMarkupOne(coin) {
 export function accordionMarkupWeek(coin) {
   return `
           <button class="Accordion Accordion--${(coin.percent_change_7d > 0) ? 'positive' : 'negative'}" role="tab" aria-selected="false">
+            <div class="Accordion__rank">
+              ${coin.rank}
+            </div>
             <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
             <div class="Accordion__title">
               ${coin.name}
@@ -113,7 +128,7 @@ export function accordionMarkupWeek(coin) {
           </button>
           <div class="Rtable Rtable--3cols">
             <div class="Rtable-cell Rtable-cell--head">
-              <p>Value:</p>
+              <h4>Value:</h4>
             </div>
             <div class="Rtable-cell">
               <p>$${coin.price_usd}USD</p>
@@ -124,15 +139,18 @@ export function accordionMarkupWeek(coin) {
           </div>
           <div class="Rtable Rtable--4cols">
             <div class="Rtable-cell Rtable-cell--head">
-              <p>Supply:</p>
+              <h4>Supply:</h4>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Available:</h5>
               <p>$${coin.available_supply}</p>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Total:</h5>
               <p>${coin.total_supply}</p>
             </div>
             <div class="Rtable-cell">
+              <h5 class="sub-header">Max:</h5>
               <p>${coin.max_supply}</p>
             </div>
           </div>

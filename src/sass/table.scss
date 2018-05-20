@@ -21,9 +21,22 @@
   padding: 0.8em 1.2em;
   overflow: hidden;
   list-style: none;
-  color: #fff;
   background: rgba( $accordion-colour, .4 );
   width: 0%;
+  h3, h4, h5 {
+    color: white;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  h5 {
+    font-size: 0.75em;
+    color: rgba( white, .8 );
+  }
+  p {
+    color: rgba( white, .7 );
+    margin: .5em 0;
+  }
 }
 
 .Rtable--3cols,
@@ -36,7 +49,7 @@
 .Accordion[aria-selected="true"] + .Rtable--3cols,
 .Accordion[aria-selected="true"] ~ .Rtable--4cols {
   opacity: 1;
-  max-height: 200px;
+  max-height: 300px;
   transition: all 0.25s ease-in;
 }
 
@@ -98,6 +111,8 @@
   color: white;
   font-weight: bold;
   font-size: 0.75em;
+  display: flex;
+  align-items: center;
 }
 .Rtable-cell--head > h1,
 .Rtable-cell--head > h2,
@@ -142,7 +157,7 @@
     max-width: 100%;
     .Rtable-cell {
       width: 100%;
-      padding: 0.2em .8em;
+      padding: .8em;
     }
   }
 }
@@ -181,6 +196,9 @@
   }
   &[aria-selected="true"] .icon-plus {
     height: 0;
+  }
+  .Accordion__rank {
+    width: 2em;
   }
   .Accordion__icon {
     margin-right: 1em;

@@ -1,35 +1,37 @@
 .Tablist {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   margin-right: $accordion-br;
-}
+  .header {
+    width: 20%;
+  }
+  .Tab {
+    padding: 0.6em 1em;
+    margin: 0 .1em;
+    text-align: center;
+    background-color: $tab-colour;
+    border: 2px solid $tab-colour;
+    border-bottom-width: 0;
+    border-radius: 0.5em 0.5em 0 0;
+    font-weight: bold;
+    color: darken($tab-colour,20%);
+    text-decoration: none;
+    transition: background-color 0.1s;
+    font-size: .9em;
+    cursor: pointer;
+    &:hover, &:focus {
+      background-color: mix(white,$tab-colour,10%);
+      border-color: mix(white,$tab-colour,10%);
+      outline: none;
+    }
+    &[aria-selected="false"]:active {
+      margin-top: 0.2em;
+      padding-bottom: 0.4em;
+    }
+    &.active {
+      background: mix(white,$tab-colour,90%);
+      cursor: default;
+    }
+  }
 
-.Tab {
-  padding: 0.6em 1em;
-  margin: 0 .1em;
-  text-align: center;
-  background-color: $tab-colour;
-  border: 2px solid $tab-colour;
-  border-bottom-width: 0;
-  border-radius: 0.5em 0.5em 0 0;
-  font-weight: bold;
-  color: darken($tab-colour,20%);
-  text-decoration: none;
-  transition: background-color 0.1s;
-  font-size: .9em;
-  cursor: pointer;
-  &:hover, &:focus {
-    background-color: mix(white,$tab-colour,10%);
-    border-color: mix(white,$tab-colour,10%);
-    outline: none;
-  }
-  &[aria-selected="false"]:active {
-    margin-top: 0.2em;
-    padding-bottom: 0.4em;
-  }
-  &.active {
-    background: mix(white,$tab-colour,90%);
-    cursor: default;
-  }
 }

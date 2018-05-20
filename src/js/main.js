@@ -19,9 +19,6 @@ let coins = $.when(getApiData).done( function(coins) {
     return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
   });
 
-  // Default sorting
-  let orderData = combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
-
   // apply markup
   const tableContainer = document.getElementById('tableContainer');
   tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
