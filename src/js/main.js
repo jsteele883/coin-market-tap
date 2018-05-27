@@ -19,9 +19,35 @@ let coins = $.when(getApiData).done( function(coins) {
     return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
   });
 
+  // Get coins with no descriptions
+  const undefinedDescriptions = combinedData.map(coin => {
+    if (coin.description === undefined) {
+      return coin.name
+    }
+  });
+
+  // Filter out the undefined ones
+  function filter_array(test_array) {
+    var index = -1,
+        arr_length = test_array ? test_array.length : 0,
+        resIndex = -1,
+        result = [];
+    while (++index < arr_length) {
+        var value = test_array[index];
+        if (value) {
+            result[++resIndex] = value;
+        }
+    }
+    return result;
+  }
+
+  // Need to email results.
+  console.log('These coins need descriptions:' filter_array(undefinedDescriptions));
+
   // apply markup
   const tableContainer = document.getElementById('tableContainer');
   tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
+
   // apply toggle Functionality to each coin
   tableToggle();
 
