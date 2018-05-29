@@ -42,7 +42,7 @@ let coins = $.when(getApiData).done( function(coins) {
   }
 
   // Need to email results.
-  console.log('These coins need descriptions:' filter_array(undefinedDescriptions));
+  console.log(filter_array(undefinedDescriptions));
 
   // apply markup
   const tableContainer = document.getElementById('tableContainer');
