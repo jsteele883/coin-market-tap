@@ -4,12 +4,33 @@ import { coinDescriptions } from './config';
 import _ from 'lodash';
 import { tableToggle } from './responsive-table';
 import { renderTabs } from './tabs';
+import { renderSearch } from './search';
 import selectedTab from './tabs';
 import { accordionMarkup } from './accordions';
 import { accordionMarkupOne } from './accordions';
 import { accordionMarkupWeek } from './accordions';
 
+renderSearch();
 renderTabs()
+
+const searchInput = document.getElementById('search');
+searchInput.onkeyup = function(){
+  var input, filter, table, tr, td, i;
+  filter = searchInput.value.toUpperCase();
+  table = document.getElementById('tableContainer');
+  tr = table.getElementsByTagName("button");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByClassName("Accordion__title")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+  console.log(filter);
+};
 
 // Get data with JQuery
 $.when(getApiData).done( function(coins) {
