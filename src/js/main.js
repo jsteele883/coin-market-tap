@@ -12,7 +12,7 @@ import { accordionMarkupWeek } from './accordions';
 renderTabs()
 
 // Get data with JQuery
-let coins = $.when(getApiData).done( function(coins) {
+$.when(getApiData).done( function(coins) {
 
   // combine coin descriptions with api data
   const combinedData = _.map(coins, function(obj) {
@@ -63,7 +63,10 @@ let coins = $.when(getApiData).done( function(coins) {
         }
         current = this.classList.toggle('active') ? i : -1;
         let selectedTab = (this.id);
-        if (selectedTab == 'one') {
+        if (selectedTab == 'rank') {
+          combinedData.sort((a, b) => parseFloat(a.rank) - parseFloat(b.rank));
+          tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
+        } else if (selectedTab == 'one') {
           combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
           tableContainer.innerHTML = `${combinedData.map(accordionMarkupOne).join('')}`;
         } else if (selectedTab == 'two') {
