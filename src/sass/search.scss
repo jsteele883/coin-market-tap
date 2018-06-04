@@ -1,0 +1,20 @@
+.search {
+  position: relative;
+  input {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    font-size: 1em;
+    border-bottom: 2px solid lighten($tab-colour,30%);
+    outline: 0;
+    color: $font-color;
+    padding: .2em;
+  }
+  .icon-search {
+    position: absolute;
+    top: -62px;
+    right: 0px;
+    max-width: .75em;
+    fill: lighten($tab-colour,30%);
+  }
+}

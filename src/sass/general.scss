@@ -41,3 +41,12 @@ strong {
 button {
   font-family: $font-family;
 }
+.l-row {
+  display: flex;
+  &.l-row--j-space-between {
+    justify-content: space-between;
+  }
+  &.l-row--a-center {
+    align-items: center;
+  }
+}

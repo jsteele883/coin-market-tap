@@ -22,7 +22,6 @@
   overflow: hidden;
   list-style: none;
   background: rgba( $accordion-colour, .4 );
-  width: 0%;
   h3, h4, h5 {
     color: white;
   }
@@ -164,12 +163,15 @@
 /* Accordion Styling
 ==================================== */
 
+.coin {
+  margin: 0 0 0.5em 0;
+}
+
 .Accordion {
   display: flex;
   align-items: center;
   position: relative;
   width: 100%;
-  margin: 0 0 0.5em 0;
   padding: 2em 2em 2em 2em;
   border-radius: $accordion-br;
   text-align: left;

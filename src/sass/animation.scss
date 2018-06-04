@@ -1,14 +1,13 @@
-.Accordion {
+.coin {
   transform: translateY(-50%) translateX(-50%);
 }
 
-.Accordion {
+.coin {
   animation: .3s ease-in-out both fade-in;
-  background: $accordion-colour;
 }
 
 @for $i from 1 through 100 {
-  .Accordion {
+  .coin {
 
     // :nth-child(1-12)
     &:nth-child(#{$i}) {

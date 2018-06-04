@@ -18,7 +18,7 @@ searchInput.onkeyup = function(){
   var input, filter, table, tr, td, i;
   filter = searchInput.value.toUpperCase();
   table = document.getElementById('tableContainer');
-  tr = table.getElementsByTagName("button");
+  tr = table.getElementsByClassName("coin");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByClassName("Accordion__title")[0];
     if (td) {
@@ -67,7 +67,7 @@ $.when(getApiData).done( function(coins) {
 
   // apply markup
   const tableContainer = document.getElementById('tableContainer');
-  tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
+  tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}</div>`;
 
   // apply toggle Functionality to each coin
   tableToggle();
