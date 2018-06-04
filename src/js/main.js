@@ -16,7 +16,8 @@ renderTabs();
 function replaceIcons(coinSymbol) {
   $(".Accordion__icon").on('error', function(){
     const coinSymbol = $(this).attr("alt");
-    $(this).unbind("error").after(`<div class='Accordion__icon Accordion__icon--default'>${coinSymbol}</div>`);
+    const coinSymbolThree = coinSymbol.substring(0, 3);
+    $(this).unbind("error").after(`<div class='Accordion__icon Accordion__icon--default'>${coinSymbolThree}</div>`);
     $(this).css("display", "none");
   });
 }
