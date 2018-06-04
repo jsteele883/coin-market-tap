@@ -1,5 +1,5 @@
 import { apiUrl } from './config';
 
-const getApiData = $.getJSON(apiUrl);
+const getApiData = fetch(apiUrl);
 
 export default getApiData;

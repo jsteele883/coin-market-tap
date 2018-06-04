@@ -5,7 +5,7 @@ export function accordionMarkup(coin) {
               <div class="Accordion__rank">
                 ${coin.rank}
               </div>
-              <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
+              <img class="Accordion__icon" src="public/images/coin-icons/${coin.symbol.toLowerCase()}.png" alt="${coin.symbol}">
               <div class="Accordion__title">
                 ${coin.name}
               </div>
@@ -61,7 +61,7 @@ export function accordionMarkupOne(coin) {
               <div class="Accordion__rank">
                 ${coin.rank}
               </div>
-              <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
+              <img class="Accordion__icon" src="public/images/coin-icons/${coin.symbol.toLowerCase()}.png" alt="${coin.symbol}">
               <div class="Accordion__title">
                 ${coin.name}
               </div>
@@ -117,7 +117,7 @@ export function accordionMarkupWeek(coin) {
               <div class="Accordion__rank">
                 ${coin.rank}
               </div>
-              <div class="Accordion__icon crypto-icon-32 crypto-icon-svg-white crypto-icon-svg-white-${coin.symbol.toLowerCase()}"> </div>
+              <img class="Accordion__icon" src="public/images/coin-icons/${coin.symbol.toLowerCase()}.png" alt="${coin.symbol}">
               <div class="Accordion__title">
                 ${coin.name}
               </div>
@@ -162,6 +162,6 @@ export function accordionMarkupWeek(coin) {
             <div class="Rtable-cell Rtable-cell--foot">
               <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
             </div>
-          </div>  
+          </div>
         `
 }
