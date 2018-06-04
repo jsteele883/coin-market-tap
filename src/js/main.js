@@ -13,6 +13,14 @@ import { accordionMarkupWeek } from './accordions';
 renderSearch();
 renderTabs();
 
+function replaceIcons(coinSymbol) {
+  $(".Accordion__icon").on('error', function(){
+    const coinSymbol = $(this).attr("alt");
+    $(this).unbind("error").after(`<div class='Accordion__icon Accordion__icon--default'>${coinSymbol}</div>`);
+    $(this).css("display", "none");
+  });
+}
+
 getApiData
   .then(coins => coins.json())
   .then(coins => {
@@ -52,13 +60,10 @@ getApiData
     const tableContainer = document.getElementById('tableContainer');
     tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
 
-    $(".Accordion__icon").on('error', function(){
-      $(this).unbind("error").after("<div class='Accordion__icon Accordion__icon--default'>ICON</div>");
-      $(this).css("display", "none");
-    });
-
     // apply toggle Functionality to each coin
     tableToggle();
+
+    replaceIcons();
 
     // tab toggling function
     (function tabClick() {
@@ -86,6 +91,7 @@ getApiData
             tableContainer.innerHTML = `${combinedData.map(accordionMarkupWeek).join('')}`;
           }
           tableToggle();
+          replaceIcons();
           });
         };
     })();
