@@ -68,16 +68,16 @@ getApiData
 
     // tab toggling function
     (function tabClick() {
-      const tab = document.getElementsByClassName("Tab");
-      let current = -1;
-
-      for (let i = 0; i < tab.length; i++) {
-        tab[i].addEventListener('click', function() {
-          if (i !== current && current !== -1) {
-            tab[current].classList.remove('active');
-          }
-          current = this.classList.toggle('active') ? i : -1;
+      const tabContainer = document.getElementById("tabContainer");
+      const tab = tabContainer.getElementsByClassName("Tab");
+      // toggle between tabs
+      for(var i = 0; i< tab.length; i++) {
+        tab[i].addEventListener("click", function() {
+          let current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
           let selectedTab = (this.id);
+          // sort order and determine mark up according to tab selection
           if (selectedTab == 'rank') {
             combinedData.sort((a, b) => parseFloat(a.rank) - parseFloat(b.rank));
             tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
@@ -93,8 +93,8 @@ getApiData
           }
           tableToggle();
           replaceIcons();
-          });
-        };
+        });
+      }
     })();
   })
   .catch((err) => {
