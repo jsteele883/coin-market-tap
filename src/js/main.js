@@ -22,7 +22,7 @@ function replaceIcons(coinSymbol) {
   });
 }
 
-// Filter out the undefined ones
+// Filter out the undefined elements from an array
 function filter_array(test_array) {
   var index = -1,
       arr_length = test_array ? test_array.length : 0,
@@ -37,7 +37,7 @@ function filter_array(test_array) {
   return result;
 }
 
-function renderAccordions(markup, order) {
+function renderAccordions(markup) {
   const getApiData = fetch(apiUrl);
   getApiData
     .then(coins => coins.json())
@@ -49,6 +49,7 @@ function renderAccordions(markup, order) {
 
       // sort coins
       combinedData.sort((a, b) => parseFloat(a.rank) - parseFloat(b.rank));
+
       // Get coins with no descriptions
       const undefinedDescriptions = combinedData.map(coin => {
         if (coin.description === undefined) {
@@ -63,6 +64,36 @@ function renderAccordions(markup, order) {
       // apply toggle Functionality to each coin
       tableToggle();
       replaceIcons();
+      // tab toggling function
+      (function tabClick() {
+        const tabContainer = document.getElementById("tabContainer");
+        const tab = tabContainer.getElementsByClassName("Tab");
+        // toggle between tabs
+        for(var i = 0; i< tab.length; i++) {
+          tab[i].addEventListener("click", function() {
+            let current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+            let selectedTab = (this.id);
+            // sort order and determine mark up according to tab selection
+            if (selectedTab == 'rank') {
+              combinedData.sort((a, b) => parseFloat(a.rank) - parseFloat(b.rank));
+              tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
+            } else if (selectedTab == 'one') {
+              combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
+              tableContainer.innerHTML = `${combinedData.map(accordionMarkupOne).join('')}`;
+            } else if (selectedTab == 'two') {
+              combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
+              tableContainer.innerHTML = `${combinedData.map(accordionMarkup).join('')}`;
+            } else if (selectedTab == 'three') {
+              combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
+              tableContainer.innerHTML = `${combinedData.map(accordionMarkupWeek).join('')}`;
+            }
+            tableToggle();
+            replaceIcons();
+          });
+        }
+      })();
     })
     .catch((err) => {
       console.log(err);
@@ -71,31 +102,4 @@ function renderAccordions(markup, order) {
 
 renderAccordions(accordionMarkup);
 
-// tab toggling function
-(function tabClick() {
-  const tabContainer = document.getElementById("tabContainer");
-  const tab = tabContainer.getElementsByClassName("Tab");
-  // toggle between tabs
-  for(var i = 0; i< tab.length; i++) {
-    tab[i].addEventListener("click", function() {
-      let current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-      let selectedTab = (this.id);
-      // sort order and determine mark up according to tab selection
-      if (selectedTab == 'rank') {
-        // combinedData.sort((a, b) => parseFloat(a.rank) - parseFloat(b.rank));
-        renderAccordions(accordionMarkup)
-      } else if (selectedTab == 'one') {
-        // combinedData.sort((a, b) => parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h));
-        renderAccordions(accordionMarkupOne);
-      } else if (selectedTab == 'two') {
-        // combinedData.sort((a, b) => parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h));
-        renderAccordions(accordionMarkup);
-      } else if (selectedTab == 'three') {
-        // combinedData.sort((a, b) => parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d));
-        renderAccordions(accordionMarkupWeek);
-      }
-    });
-  }
-})();
+setInterval(() => renderAccordions(accordionMarkup), 60000);
