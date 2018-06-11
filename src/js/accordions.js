@@ -30,7 +30,22 @@ export function accordionMarkup(coin) {
                 <p>${coin.price_btc}BTC</p>
               </div>
             </div>
-            <div class="Rtable Rtable--4cols">
+            <div class="Rtable-cell">
+              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
+              <ul class="tags">
+                ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
+                ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
+                ${coin.Tag3 ? `<li class="tag">#${coin.Tag3}</li>` : '' }
+                ${coin.Tag4 ? `<li class="tag">#${coin.Tag4}</li>` : '' }
+                ${coin.Tag5 ? `<li class="tag">#${coin.Tag5}</li>` : '' }
+                ${coin.Tag6 ? `<li class="tag">#${coin.Tag6}</li>` : '' }
+                ${coin.Tag7 ? `<li class="tag">#${coin.Tag7}</li>` : '' }
+                ${coin.Tag8 ? `<li class="tag">#${coin.Tag8}</li>` : '' }
+                ${coin.Tag9 ? `<li class="tag">#${coin.Tag9}</li>` : '' }
+                ${coin.Tag10 ? `<li class="tag">#${coin.Tag10}</li>` : '' }
+              </ul>
+            </div>
+            <div class="Rtable Rtable--4cols Rtable-cell--foot">
               <div class="Rtable-cell Rtable-cell--head">
                 <h4>Supply:</h4>
               </div>
@@ -46,9 +61,6 @@ export function accordionMarkup(coin) {
                 <h5 class="sub-header">Max:</h5>
                 <p>${coin.max_supply}</p>
               </div>
-            </div>
-            <div class="Rtable-cell Rtable-cell--foot">
-              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
             </div>
           </div>
         `
@@ -86,7 +98,22 @@ export function accordionMarkupOne(coin) {
                 <p>${coin.price_btc}BTC</p>
               </div>
             </div>
-            <div class="Rtable Rtable--4cols">
+            <div class="Rtable-cell">
+              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
+              <ul class="tags">
+                ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
+                ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
+                ${coin.Tag3 ? `<li class="tag">#${coin.Tag3}</li>` : '' }
+                ${coin.Tag4 ? `<li class="tag">#${coin.Tag4}</li>` : '' }
+                ${coin.Tag5 ? `<li class="tag">#${coin.Tag5}</li>` : '' }
+                ${coin.Tag6 ? `<li class="tag">#${coin.Tag6}</li>` : '' }
+                ${coin.Tag7 ? `<li class="tag">#${coin.Tag7}</li>` : '' }
+                ${coin.Tag8 ? `<li class="tag">#${coin.Tag8}</li>` : '' }
+                ${coin.Tag9 ? `<li class="tag">#${coin.Tag9}</li>` : '' }
+                ${coin.Tag10 ? `<li class="tag">#${coin.Tag10}</li>` : '' }
+              </ul>
+            </div>
+            <div class="Rtable Rtable--4cols Rtable-cell--foot">
               <div class="Rtable-cell Rtable-cell--head">
                 <h4>Supply:</h4>
               </div>
@@ -102,9 +129,6 @@ export function accordionMarkupOne(coin) {
                 <h5 class="sub-header">Max:</h5>
                 <p>${coin.max_supply}</p>
               </div>
-            </div>
-            <div class="Rtable-cell Rtable-cell--foot">
-              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
             </div>
           </div>
         `
@@ -142,7 +166,22 @@ export function accordionMarkupWeek(coin) {
                 <p>${coin.price_btc}BTC</p>
               </div>
             </div>
-            <div class="Rtable Rtable--4cols">
+            <div class="Rtable-cell">
+              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
+              <ul class="tags">
+                ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
+                ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
+                ${coin.Tag3 ? `<li class="tag">#${coin.Tag3}</li>` : '' }
+                ${coin.Tag4 ? `<li class="tag">#${coin.Tag4}</li>` : '' }
+                ${coin.Tag5 ? `<li class="tag">#${coin.Tag5}</li>` : '' }
+                ${coin.Tag6 ? `<li class="tag">#${coin.Tag6}</li>` : '' }
+                ${coin.Tag7 ? `<li class="tag">#${coin.Tag7}</li>` : '' }
+                ${coin.Tag8 ? `<li class="tag">#${coin.Tag8}</li>` : '' }
+                ${coin.Tag9 ? `<li class="tag">#${coin.Tag9}</li>` : '' }
+                ${coin.Tag10 ? `<li class="tag">#${coin.Tag10}</li>` : '' }
+              </ul>
+            </div>
+            <div class="Rtable Rtable--4cols Rtable-cell--foot">
               <div class="Rtable-cell Rtable-cell--head">
                 <h4>Supply:</h4>
               </div>
@@ -158,9 +197,6 @@ export function accordionMarkupWeek(coin) {
                 <h5 class="sub-header">Max:</h5>
                 <p>${coin.max_supply}</p>
               </div>
-            </div>
-            <div class="Rtable-cell Rtable-cell--foot">
-              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
             </div>
           </div>
         `

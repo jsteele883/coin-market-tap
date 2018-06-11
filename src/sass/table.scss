@@ -109,7 +109,6 @@
 .Rtable-cell--head {
   color: white;
   font-weight: bold;
-  font-size: 0.75em;
   display: flex;
   align-items: center;
 }
@@ -183,6 +182,7 @@
   border: 0;
   box-shadow: 20px 20px 50px 0 rgba(0,0,0,0.10);
   cursor: pointer;
+  font-size: .75em;
   &:hover, &:focus {
     outline: none;
     filter: contrast(150%);
@@ -204,14 +204,14 @@
   }
   .Accordion__icon {
     margin-right: 1em;
-    max-width: 3em;
+    max-width: 2.25em;
     color: #fff;
   }
   .Accordion__icon--default {
     border-radius: 100%;
     border: .1em solid #fff;
-    height: 2.9em;
-    width: 2.9em;
+    height: 2.25em;
+    width: 2.25em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -257,4 +257,46 @@
 .js-RtableTabs,
 .js-RtableAccordions {
   min-width: 240px;
+}
+
+.tags {
+  list-style: none;
+  margin: 1em 0;
+  overflow: hidden;
+  padding: 0;
+  li {
+    float: left;
+  }
+  .tag {
+    background: #eee;
+    border-radius: 3px 0 0 3px;
+    font-size: 11px;
+    color: #999;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 10px;
+    border-left: 4px solid $accordion-colour-positive;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    transition: color 0.2s;
+    &:after {
+      background: $accordion-colour;
+      border-bottom: 13px solid transparent;
+      border-left: 10px solid #eee;
+      border-top: 13px solid transparent;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    &:hover {
+      background-color: $accordion-colour-positive;
+      color: white;
+    }
+    &:hover::after {
+       border-left-color: $accordion-colour-positive;
+    }
+  }
 }
