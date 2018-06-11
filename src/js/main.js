@@ -102,4 +102,4 @@ function renderAccordions(markup) {
 
 renderAccordions(accordionMarkup);
 
-setInterval(() => renderAccordions(accordionMarkup), 60000);
+setInterval(() => renderAccordions(accordionMarkup), 600000);
