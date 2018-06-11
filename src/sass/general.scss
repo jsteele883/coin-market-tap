@@ -49,6 +49,17 @@ button {
   &.l-row--a-center {
     align-items: center;
   }
+  @media screen and (max-width: 780px) {
+    &.l-row--j-space-between-mob {
+      justify-content: space-between;
+    }
+    &.l-row--a-center-mob {
+      align-items: center;
+    }
+    &.l-row--j-center-mob {
+      justify-content: center;
+    }
+  }
 }
 
 .logo {

@@ -17,4 +17,24 @@
     max-width: .75em;
     fill: lighten($tab-colour,30%);
   }
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 2000;
+    width: 100%;
+    background: $body-background;
+    height: 50px;
+    border-top: 2px solid lighten($tab-colour,30%);
+    input {
+      border: 0;
+      padding: .8em;
+      width: 100%;
+    }
+    .icon-search {
+      top: -50px;
+      right: 15px;
+      max-width: 1em;
+    }
+  }
 }

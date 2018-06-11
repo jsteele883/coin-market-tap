@@ -171,7 +171,7 @@
   align-items: center;
   position: relative;
   width: 100%;
-  padding: 2em 2em 2em 2em;
+  padding: 1.5em 1em;
   border-radius: $accordion-br;
   text-align: left;
   background-color: $accordion-colour;
@@ -200,7 +200,7 @@
     height: 0;
   }
   .Accordion__rank {
-    width: 2em;
+    width: 1.2em;
   }
   .Accordion__icon {
     margin-right: 1em;
