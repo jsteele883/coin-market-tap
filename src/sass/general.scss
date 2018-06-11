@@ -16,8 +16,8 @@ body {
   border-top: none;
   border-bottom: none;
   color: $font-color;
-  @media screen and (max-width: 500px) {
-    padding: 1em;
+  @media screen and (max-width: 768px) {
+    padding: .5em .5em 60px .5em;
   }
 }
 h1,
