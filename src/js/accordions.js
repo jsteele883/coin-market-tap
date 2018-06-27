@@ -10,7 +10,7 @@ export function accordionMarkup(coin) {
                 ${coin.name}
               </div>
               <div class="Accordion__data Accordion__data--hide">
-                <p>$${coin.price_usd}USD</p>
+                <p>$${parseFloat(coin.price_usd).toFixed(4)}USD</p>
               </div>
               <div class="Accordion__data Accordion__data--show">
                 <p>${coin.percent_change_24h}% ${(coin.percent_change_24h > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
@@ -19,6 +19,9 @@ export function accordionMarkup(coin) {
                 <svg class="icon icon-plus"><use xlink:href="#icon-plus"></use></svg>
               </div>
             </button>
+            <div class="Rtable-cell">
+              <p>${coin.description ? `${coin.description}` : 'This coin has no description yet'}</p>
+            </div>
             <div class="Rtable Rtable--3cols">
               <div class="Rtable-cell Rtable-cell--head">
                 <h4>Value:</h4>
@@ -31,7 +34,6 @@ export function accordionMarkup(coin) {
               </div>
             </div>
             <div class="Rtable-cell">
-              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
               <ul class="tags">
                 ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
                 ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
@@ -78,7 +80,7 @@ export function accordionMarkupOne(coin) {
                 ${coin.name}
               </div>
               <div class="Accordion__data Accordion__data--hide">
-                <p>$${coin.price_usd}USD</p>
+                <p>$${parseFloat(coin.price_usd).toFixed(4)}USD</p>
               </div>
               <div class="Accordion__data Accordion__data--show">
                 <p>${coin.percent_change_1h}% ${(coin.percent_change_1h > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
@@ -87,6 +89,9 @@ export function accordionMarkupOne(coin) {
                 <svg class="icon icon-plus"><use xlink:href="#icon-plus"></use></svg>
               </div>
             </button>
+            <div class="Rtable-cell">
+              <p>${coin.description ? `${coin.description}` : 'This coin has no description yet'}</p>
+            </div>
             <div class="Rtable Rtable--3cols">
               <div class="Rtable-cell Rtable-cell--head">
                 <h4>Value:</h4>
@@ -99,7 +104,6 @@ export function accordionMarkupOne(coin) {
               </div>
             </div>
             <div class="Rtable-cell">
-              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
               <ul class="tags">
                 ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
                 ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
@@ -146,7 +150,7 @@ export function accordionMarkupWeek(coin) {
                 ${coin.name}
               </div>
               <div class="Accordion__data Accordion__data--hide">
-                <p>$${coin.price_usd}USD</p>
+                <p>$${parseFloat(coin.price_usd).toFixed(4)}USD</p>
               </div>
               <div class="Accordion__data Accordion__data--show">
                 <p>${coin.percent_change_7d}% ${(coin.percent_change_7d > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
@@ -155,6 +159,9 @@ export function accordionMarkupWeek(coin) {
                 <svg class="icon icon-plus"><use xlink:href="#icon-plus"></use></svg>
               </div>
             </button>
+            <div class="Rtable-cell">
+              <p>${coin.description ? `${coin.description}` : 'This coin has no description yet'}</p>
+            </div>
             <div class="Rtable Rtable--3cols">
               <div class="Rtable-cell Rtable-cell--head">
                 <h4>Value:</h4>
@@ -167,7 +174,6 @@ export function accordionMarkupWeek(coin) {
               </div>
             </div>
             <div class="Rtable-cell">
-              <p>${coin.description ? `${coin.description}` : 'There aint no description for this coin yet!'}</p>
               <ul class="tags">
                 ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
                 ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
