@@ -1,6 +1,6 @@
 import '../sass/style.scss';
 import { apiUrl } from './config';
-import { coinDescriptions } from './config';
+import { coinDescriptionsUrl } from './config';
 import _ from 'lodash';
 import { tableToggle } from './responsive-table';
 import { renderTabs } from './tabs';
@@ -37,15 +37,51 @@ function filter_array(test_array) {
   return result;
 }
 
+// function to get apiData need to store result and return asynchronously https://developers.google.com/web/fundamentals/primers/promises
+
+function get(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+
+    req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    // Make the request
+    req.send();
+  });
+}
+
+
 function renderAccordions(markup) {
-  const getApiData = fetch(apiUrl);
-  getApiData
-    .then(coins => coins.json())
-    .then(coins => {
-      // combine coin descriptions with api data
+  // get cmt data
+  get(apiUrl).then(JSON.parse).then(function(coins){
+    // get google sheet data
+    get(coinDescriptionsUrl).then(JSON.parse).then(function(coinDescriptions) {
+      // combine arrays
       const combinedData = _.map(coins, function(obj) {
         return _.assign(obj, _.find(coinDescriptions, {name: obj.name}));
       });
+
+      console.log(combinedData);
 
       // sort coins
       combinedData.sort((a, b) => parseFloat(a.rank) - parseFloat(b.rank));
@@ -95,6 +131,7 @@ function renderAccordions(markup) {
         }
       })();
     })
+  })
     .catch((err) => {
       console.log(err);
   })

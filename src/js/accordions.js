@@ -35,16 +35,16 @@ export function accordionMarkup(coin) {
             </div>
             <div class="Rtable-cell">
               <ul class="tags">
-                ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
-                ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
-                ${coin.Tag3 ? `<li class="tag">#${coin.Tag3}</li>` : '' }
-                ${coin.Tag4 ? `<li class="tag">#${coin.Tag4}</li>` : '' }
-                ${coin.Tag5 ? `<li class="tag">#${coin.Tag5}</li>` : '' }
-                ${coin.Tag6 ? `<li class="tag">#${coin.Tag6}</li>` : '' }
-                ${coin.Tag7 ? `<li class="tag">#${coin.Tag7}</li>` : '' }
-                ${coin.Tag8 ? `<li class="tag">#${coin.Tag8}</li>` : '' }
-                ${coin.Tag9 ? `<li class="tag">#${coin.Tag9}</li>` : '' }
-                ${coin.Tag10 ? `<li class="tag">#${coin.Tag10}</li>` : '' }
+                ${coin.tag1 ? `<li class="tag">#${coin.tag1}</li>` : '' }
+                ${coin.tag2 ? `<li class="tag">#${coin.tag2}</li>` : '' }
+                ${coin.tag3 ? `<li class="tag">#${coin.tag3}</li>` : '' }
+                ${coin.tag4 ? `<li class="tag">#${coin.tag4}</li>` : '' }
+                ${coin.tag5 ? `<li class="tag">#${coin.tag5}</li>` : '' }
+                ${coin.tag6 ? `<li class="tag">#${coin.tag6}</li>` : '' }
+                ${coin.tag7 ? `<li class="tag">#${coin.tag7}</li>` : '' }
+                ${coin.tag8 ? `<li class="tag">#${coin.tag8}</li>` : '' }
+                ${coin.tag9 ? `<li class="tag">#${coin.tag9}</li>` : '' }
+                ${coin.tag10 ? `<li class="tag">#${coin.tag10}</li>` : '' }
               </ul>
             </div>
             <div class="Rtable Rtable--4cols Rtable-cell--foot">
@@ -105,16 +105,16 @@ export function accordionMarkupOne(coin) {
             </div>
             <div class="Rtable-cell">
               <ul class="tags">
-                ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
-                ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
-                ${coin.Tag3 ? `<li class="tag">#${coin.Tag3}</li>` : '' }
-                ${coin.Tag4 ? `<li class="tag">#${coin.Tag4}</li>` : '' }
-                ${coin.Tag5 ? `<li class="tag">#${coin.Tag5}</li>` : '' }
-                ${coin.Tag6 ? `<li class="tag">#${coin.Tag6}</li>` : '' }
-                ${coin.Tag7 ? `<li class="tag">#${coin.Tag7}</li>` : '' }
-                ${coin.Tag8 ? `<li class="tag">#${coin.Tag8}</li>` : '' }
-                ${coin.Tag9 ? `<li class="tag">#${coin.Tag9}</li>` : '' }
-                ${coin.Tag10 ? `<li class="tag">#${coin.Tag10}</li>` : '' }
+                ${coin.tag1 ? `<li class="tag">#${coin.tag1}</li>` : '' }
+                ${coin.tag2 ? `<li class="tag">#${coin.tag2}</li>` : '' }
+                ${coin.tag3 ? `<li class="tag">#${coin.tag3}</li>` : '' }
+                ${coin.tag4 ? `<li class="tag">#${coin.tag4}</li>` : '' }
+                ${coin.tag5 ? `<li class="tag">#${coin.tag5}</li>` : '' }
+                ${coin.tag6 ? `<li class="tag">#${coin.tag6}</li>` : '' }
+                ${coin.tag7 ? `<li class="tag">#${coin.tag7}</li>` : '' }
+                ${coin.tag8 ? `<li class="tag">#${coin.tag8}</li>` : '' }
+                ${coin.tag9 ? `<li class="tag">#${coin.tag9}</li>` : '' }
+                ${coin.tag10 ? `<li class="tag">#${coin.tag10}</li>` : '' }
               </ul>
             </div>
             <div class="Rtable Rtable--4cols Rtable-cell--foot">
@@ -175,16 +175,16 @@ export function accordionMarkupWeek(coin) {
             </div>
             <div class="Rtable-cell">
               <ul class="tags">
-                ${coin.Tag1 ? `<li class="tag">#${coin.Tag1}</li>` : '' }
-                ${coin.Tag2 ? `<li class="tag">#${coin.Tag2}</li>` : '' }
-                ${coin.Tag3 ? `<li class="tag">#${coin.Tag3}</li>` : '' }
-                ${coin.Tag4 ? `<li class="tag">#${coin.Tag4}</li>` : '' }
-                ${coin.Tag5 ? `<li class="tag">#${coin.Tag5}</li>` : '' }
-                ${coin.Tag6 ? `<li class="tag">#${coin.Tag6}</li>` : '' }
-                ${coin.Tag7 ? `<li class="tag">#${coin.Tag7}</li>` : '' }
-                ${coin.Tag8 ? `<li class="tag">#${coin.Tag8}</li>` : '' }
-                ${coin.Tag9 ? `<li class="tag">#${coin.Tag9}</li>` : '' }
-                ${coin.Tag10 ? `<li class="tag">#${coin.Tag10}</li>` : '' }
+                ${coin.tag1 ? `<li class="tag">#${coin.tag1}</li>` : '' }
+                ${coin.tag2 ? `<li class="tag">#${coin.tag2}</li>` : '' }
+                ${coin.tag3 ? `<li class="tag">#${coin.tag3}</li>` : '' }
+                ${coin.tag4 ? `<li class="tag">#${coin.tag4}</li>` : '' }
+                ${coin.tag5 ? `<li class="tag">#${coin.tag5}</li>` : '' }
+                ${coin.tag6 ? `<li class="tag">#${coin.tag6}</li>` : '' }
+                ${coin.tag7 ? `<li class="tag">#${coin.tag7}</li>` : '' }
+                ${coin.tag8 ? `<li class="tag">#${coin.tag8}</li>` : '' }
+                ${coin.tag9 ? `<li class="tag">#${coin.tag9}</li>` : '' }
+                ${coin.tag10 ? `<li class="tag">#${coin.tag10}</li>` : '' }
               </ul>
             </div>
             <div class="Rtable Rtable--4cols Rtable-cell--foot">
