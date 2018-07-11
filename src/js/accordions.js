@@ -10,7 +10,7 @@ export function accordionMarkup(coin) {
                 ${coin.name}
               </div>
               <div class="Accordion__data Accordion__data--hide">
-                <p>$${parseFloat(coin.price_usd).toFixed(4)}USD</p>
+                <p>$${parseFloat(coin.price_usd).toFixed(4).replace(/0+$/, "")}USD</p>
               </div>
               <div class="Accordion__data Accordion__data--show">
                 <p>${coin.percent_change_24h}% ${(coin.percent_change_24h > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
@@ -80,7 +80,7 @@ export function accordionMarkupOne(coin) {
                 ${coin.name}
               </div>
               <div class="Accordion__data Accordion__data--hide">
-                <p>$${parseFloat(coin.price_usd).toFixed(4)}USD</p>
+                <p>$${parseFloat(coin.price_usd).toFixed(4).replace(/0+$/, "")}USD</p>
               </div>
               <div class="Accordion__data Accordion__data--show">
                 <p>${coin.percent_change_1h}% ${(coin.percent_change_1h > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
@@ -150,7 +150,7 @@ export function accordionMarkupWeek(coin) {
                 ${coin.name}
               </div>
               <div class="Accordion__data Accordion__data--hide">
-                <p>$${parseFloat(coin.price_usd).toFixed(4)}USD</p>
+                <p>$${parseFloat(coin.price_usd).toFixed(4).replace(/0+$/, "")}USD</p>
               </div>
               <div class="Accordion__data Accordion__data--show">
                 <p>${coin.percent_change_7d}% ${(coin.percent_change_7d > 0) ? '<svg class="icon icon-arrow-up2"><use xlink:href="#icon-arrow-up2"></use></svg>' : '<svg class="icon icon-arrow-down2"><use xlink:href="#icon-arrow-down2"></use></svg>'}</p>
